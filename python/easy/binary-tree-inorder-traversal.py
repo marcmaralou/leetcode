@@ -12,7 +12,14 @@
 # Input: root = [1]
 # Output: [1]
 
-#RECURSIVE SOLUTION
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# RECURSIVE SOLUTION
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
@@ -25,4 +32,21 @@ class Solution:
             inorder(root.right)
         
         inorder(root)
+        return ans
+      
+# ITERATIVE SOLUTION
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        stack = []
+        curr = root
+
+        while curr or stack:
+            while curr:
+                stack.append(curr)
+                curr = curr.left
+            curr = stack.pop()
+            ans.append(curr.val)
+            curr = curr.right
+        
         return ans
