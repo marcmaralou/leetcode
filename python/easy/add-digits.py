@@ -12,6 +12,7 @@
 # Input: num = 0
 # Output: 0
 
+# LOOP
 class Solution:
     def addDigits(self, n: int) -> int:
         while len(str(n)) > 1:
@@ -20,3 +21,12 @@ class Solution:
                 sum += int(digit)
             n = sum
         return n
+
+# O(1)
+class Solution:
+    def addDigits(self, n: int) -> int:
+        if n == 0:
+            return 0
+        if n % 9 == 0:
+            return 9
+        return n % 9
