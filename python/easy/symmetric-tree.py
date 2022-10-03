@@ -29,3 +29,28 @@ class Solution:
             return False
         else:
             return left.val == right.val and self.isMirror(left.left, right.right) and self.isMirror(left.right, right.left)
+
+# ITERATIVELY
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        list = [root, root]
+        
+        while list:
+            left = list.pop(0)
+            right = list.pop(0)
+
+            if left and not right:
+                return False
+            if not left and right:
+                return False
+            if not left and not right:
+                continue
+            if left.val != right.val:
+                return False
+            
+            list.append(left.left)
+            list.append(right.right)
+            list.append(left.right)
+            list.append(right.left)
+
+        return True
