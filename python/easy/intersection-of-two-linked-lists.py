@@ -21,8 +21,6 @@
 # Output: No intersection
 # Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.
 # Explanation: The two lists do not intersect, so return null.
- 
-# Follow up: Could you write a solution that runs in O(m + n) time and use only O(1) memory?
   
 # Definition for singly-linked list.
 # class ListNode:
@@ -44,3 +42,36 @@ class Solution:
             headB = headB.next
         
         return None
+       
+ # Follow up: Could you write a solution that runs in O(m + n) time and use only O(1) memory?      
+ class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        a, b = 0, 0
+        currA, currB = headA, headB
+
+        while currA:
+            a += 1
+            currA = currA.next
+        while currB:
+            b += 1
+            currB = currB.next
+
+        if a > b:
+            diff = a - b
+            currL = headA
+            currS = headB
+        else:
+            diff = b - a
+            currL = headB
+            currS = headA
+        
+        i = 0
+        while i < diff:
+            i += 1
+            currL = currL.next
+
+        while currL != currS:
+            currL = currL.next
+            currS = currS.next
+        
+        return currL
