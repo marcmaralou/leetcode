@@ -8,8 +8,6 @@
 # Example 2:
 # Input: nums = [2,2,1,1,1,2,2]
 # Output: 2
- 
-# Follow-up: Could you solve the problem in linear time and in O(1) space?
 
 from collections import Counter
 
@@ -21,3 +19,20 @@ class Solution:
         for k, v in counter.items():
             if v > majority:
                 return k
+              
+# Follow-up: Could you solve the problem in linear time and in O(1) space?
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        ans = nums[0]
+        counter = 1
+
+        for i in range(1, len(nums)):
+            if ans == nums[i]:
+                counter += 1
+            else:
+                counter -= 1
+                if counter == -1:
+                    ans = nums[i]
+                    counter = 1
+        
+        return ans
