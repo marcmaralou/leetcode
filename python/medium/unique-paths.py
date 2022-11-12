@@ -19,7 +19,7 @@ class Solution:
         dp = [[0 for col in range(m)] for row in range(n)]
         
         for row in range(n):
-            p[row][0] = 1
+            dp[row][0] = 1
         for col in range(m):
             dp[0][col] = 1
 
