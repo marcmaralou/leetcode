@@ -52,6 +52,7 @@ class Solution:
 
             for neighbor in node.neighbors:
                 copy.neighbors.append(dfs(neighbor))
+                
             return copy
 
         if not node:
