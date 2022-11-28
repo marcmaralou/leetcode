@@ -22,5 +22,5 @@ class Solution:
             if e > 1:
                 return i + 1
 
-# TIME COMPLEXITY:
-# SPACE COMPLEXITY:
+# TIME COMPLEXITY: O(n)
+# SPACE COMPLEXITY: O(n)
