@@ -59,3 +59,6 @@ class Solution:
             return None
         else:
             return dfs(node)
+ 
+# TIME COMPLEXITY: O(n) where n == edges + vertices
+# SPACE COMPLEXITY: O(n) where n is the size of the dictionary
