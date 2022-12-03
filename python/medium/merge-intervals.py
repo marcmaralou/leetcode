@@ -12,7 +12,7 @@
 
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(key = lambda i : i[0])
+        intervals.sort(key = lambda i : i[0]) # O(nlogn) to sort
         output = [intervals[0]]
 
         for start, end in intervals:
@@ -25,5 +25,5 @@ class Solution:
         
         return output
 
-# TIME COMPLEXITY: O(nlogn) i don't understand this one. 'sort input then iterate thru input'
+# TIME COMPLEXITY: O(nlogn) # plus O(n) for iterating through intervals, but that's smaller
 # SPACE COMPLEXITY: O(1) except for the output
