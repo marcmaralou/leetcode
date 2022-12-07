@@ -19,7 +19,7 @@ class Solution:
     def encode(self, strs):
         output = ''
         
-        for str in strs:
+        for str in strs: # O(n) time complexity, maybe n^2 since it copies over string? idk, no extra space except for output
           output += str(len(str)) + '#' + str
           
         return output
@@ -31,7 +31,7 @@ class Solution:
     def decode(self, str):
         output, i = [], 0
         
-        while i < len(str):
+        while i < len(str): # O(n) time complexity, iterating over once, no extra space except for output
           j = i
           
           while str[j] != '#':
