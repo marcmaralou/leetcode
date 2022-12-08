@@ -16,9 +16,9 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        array = []
+        array = [] # O(n) space complexity here where n is number of nodes
         
-        def inorder(node):
+        def inorder(node): # O(n) time complexity here where n is number of nodes, you visit them multiple times but that's constant for each node, doesn't depend on other nodes
             if not node:
                 return
             inorder(node.left)
