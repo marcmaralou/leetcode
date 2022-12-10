@@ -19,28 +19,30 @@
 #         self.next = next
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        """
+        """ 
         Do not return anything, modify head in-place instead.
-        """
-        # finding halfway point
+        """ # O(1) space complexity, no extra space
+        # finding the halfway point
         slow, fast = head, head.next
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
 
-        # reversing second half of list
-        second = slow.next
+        # changing direction of right side
+        right = slow.next
         slow.next = prev = None
-        while second:
-            temp = second.next
-            second.next = prev
-            prev = second
-            second = temp
-
-        # splicing lists together
-        first, second = head, prev
-        while second:
-            temp1, temp2 = first.next, second.next
-            first.next = second
-            second.next = temp1
-            first, second = temp1, temp2
+        while right:
+            temp = right.next
+            right.next = prev
+            prev = right
+            right = temp
+        
+        # splicing two sides togther
+        left, right = head, prev
+        while right:
+            tempL, tempR = left.next, right.next
+            left.next = right
+            right.next = tempL
+            left, right = tempL, tempR
+        
+        # O(n) time complexity, just iterating through linked list multiple times
