@@ -14,16 +14,18 @@
 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        answer = [1] * len(nums)
+        output = [0 for i in range(len(nums))] # does not count as extra space, O(1)
 
-        prefix = 1
-        for i in range(len(nums)):
-            answer[i] = prefix
-            prefix *= nums[i]
-
-        postfix = 1
-        for i in range(len(nums) - 1, -1, -1):
-            answer[i] *= postfix
-            postfix *= nums[i]
+        # calculating amts before number at each position
+        pre = 1
+        for i in range(len(nums)): # O(n), but ran thru it twice
+            output[i] = pre
+            pre *= nums[i]
         
-        return answer
+        # calculating amts after number at each position, iterating thru same array
+        post = 1
+        for i in range(len(nums) - 1, -1, -1):
+            output[i] *= post
+            post *= nums[i]
+        
+        return output
