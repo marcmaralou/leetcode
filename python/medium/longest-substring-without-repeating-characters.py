@@ -18,14 +18,14 @@
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        list = []
-        maximum, l = 0, 0
+        substring = deque() # O(n) extra space, could be all the chars of s
+        longest = 0
 
-        for r in range(len(s)):
-            while s[r] in list:
-                list.remove(s[l])
-                l += 1
-            list.append(s[r])
-            maximum = max(r - l + 1, maximum)
-        
-        return maximum
+        for i in range(len(s)): # O(n) time complexity for this
+            while s[i] in substring:
+                substring.popleft() # once their is a dupe, take from queue until not there
+
+            substring.append(s[i])
+            longest = max(longest, len(s))
+
+        return longest
