@@ -15,9 +15,9 @@
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        dict = defaultdict(list)
+        dict = defaultdict(list) # O(n) extra space w/ n being words in strs
 
-        for str in strs:
+        for str in strs: # O(n) time complexity for iterating through it once
             key = ''.join(sorted(list(str)))
             dict[key].append(str)
         
