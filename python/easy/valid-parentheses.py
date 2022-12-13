@@ -18,19 +18,25 @@
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        for char in s:
-            if char in '({[':
-                stack.append(char)
-            elif char == ')' and len(stack) != 0 and stack[-1] == '(':
+        stack = [] # O(n) memory here, n is amt of parentheses
+
+        for par in s: # O(n) run time iterating thru once
+            if par in '({[':
+                stack.append(par)
+
+            elif par == ')' and len(stack) != 0 and stack[-1] == '(':
                 stack.pop()
-            elif char == '}' and len(stack) != 0 and stack[-1] == '{':
+
+            elif par == '}' and len(stack) != 0 and stack[-1] == '{':
                 stack.pop()
-            elif char == ']' and len(stack) != 0 and stack[-1] == '[':
+
+            elif par == ']' and len(stack) != 0 and stack[-1] == '[':
                 stack.pop()
+
             else:
                 return False
-        if len(stack) == 0:
+        
+        if len(stack) == 0: # everything had a pair
             return True
         else:
             return False
