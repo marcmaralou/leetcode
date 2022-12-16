@@ -21,13 +21,10 @@ class Solution:
         if n == 1 or n == 2:
             return n
         
-        prev2 = 1
-        prev = 2
-        curr = 0
-        
-        for steps in range(3, n+1):
-            curr = prev + prev2
-            prev2 = prev
+        prevprev, prev, curr = 1, 2, 0
+        for i in range(3, n + 1): # O(n) time complexity
+            curr = prevprev + prev
+            prevprev = prev
             prev = curr
-        
+            
         return curr
