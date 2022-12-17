@@ -23,6 +23,10 @@
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        stripped = ''.join(filter(str.isalnum, s))
-        res = stripped.lower()
-        return res == res[::-1]
+        palindrome = '' # O(n) extra space here
+
+        for char in s: # O(n) time complexity
+            if char.isalpha() or char.isnumeric():
+                palindrome += char.lower()
+        
+        return palindrome == palindrome[::-1] # reversing is same time complexity?
