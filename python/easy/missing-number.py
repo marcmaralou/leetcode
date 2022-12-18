@@ -15,17 +15,15 @@
 # Output: 8
 # Explanation: n = 9 since there are 9 numbers, so all numbers are in the range [0,9]. 8 is the missing number in the range since it does not appear in nums.
 
-Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
+# Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
 
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        nums.sort()
-        if nums[0] != 0:
-            return 0
+        nums.sort() # O(nlogn) time
+
+        for i, e in enumerate(nums):
+            if i != e:
+                return i
+        
         if nums[-1] != len(nums):
             return len(nums)
-        start, curr = nums[0], nums[0]
-        for num in nums[1:]:
-            curr += 1
-            if curr != num:
-                return curr
