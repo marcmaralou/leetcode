@@ -32,12 +32,12 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        seen = set()
+        visited = set() # O(n) extra space
 
-        while head:
-            if head in seen:
+        while head: # O(n) time complexity
+            if head in visited:
                 return True
-            seen.add(head)
+            visited.add(head)
             head = head.next
         
         return False
