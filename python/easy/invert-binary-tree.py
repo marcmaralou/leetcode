@@ -18,17 +18,18 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        def dfs(node):
-            if node is None:
-                return None
+        def dfs(node): # O(n) time complexity, visit every node
+            if not node:
+                return
 
             node.left, node.right = node.right, node.left
 
             dfs(node.left)
             dfs(node.right)
-        
+
         dfs(root)
 
         return root
