@@ -18,5 +18,5 @@
 
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        list = s.split()
-        return len(list[-1])
+        words = s.split() # O(n) extra space, n is words
+        return len(words[-1]) # O(1) time complexity
