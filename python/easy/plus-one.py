@@ -24,11 +24,17 @@
 
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        string = ''
-        list = []
-        for digit in digits:
+        string = '' # O(n) space here
+        
+        for digit in digits: # O(n) time
             string += str(digit)
-        ans = int(string) + 1
-        for num in str(ans):
-            list.append(num)
+        
+        number = int(string) + 1
+        numStr = str(number)
+        
+        list = [] # O(n) space
+
+        for char in numStr: # O(n) time
+            list.append(int(char))
+        
         return list
