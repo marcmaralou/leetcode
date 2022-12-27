@@ -13,10 +13,13 @@
 
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        pointer = len(nums) - 1
+        p = len(nums) - 1
 
-        for i in range(len(nums) - 2, -1, -1):
-            if i + nums[i] >= pointer:
-                pointer = i
+        for i in range(len(nums) - 2, -1, -1): # O(n) time
+            if i + nums[i] >= p:
+                p = i
         
-        return pointer == 0
+        if p == 0:
+            return True
+        else:
+            return False
