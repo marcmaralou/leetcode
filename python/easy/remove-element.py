@@ -18,7 +18,9 @@
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        x = nums.count(val)
-        for i in range(0, x):
-            nums.remove(val)
+        c = nums.count(val) # O(n) time
+
+        for i in range(0, c): # O(n) time
+            nums.remove(val) # O(1) space, done in place
+        
         return len(nums)
