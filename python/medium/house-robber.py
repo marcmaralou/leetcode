@@ -15,15 +15,15 @@
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        list = [0] * len(nums)
-
         if len(nums) == 1:
             return nums[0]
-
-        list[0] = nums[0]
-        list[1] = max(nums[0], nums[1])
-
-        for i in range(2, len(nums)):
-            list[i] = max(nums[i] + list[i - 2], list[i - 1])
         
-        return list[-1]
+        total = [0] * len(nums) # O(n) space
+
+        total[0] = nums[0]
+        total[1] = max(nums[0], nums[1])
+
+        for i in range(2, len(nums)): # O(n) time
+            total[i] = max(total[i - 2] + nums[i], total[i - 1])
+
+        return total[-1]
